@@ -78,11 +78,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             gameManager.UpdateHealth(healthUpValue);
         }
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy (other.gameObject);
-            gameManager.UpdateHealth(healthDownValue);
-        }
+        
         if (other.CompareTag("Animal"))
         {
             Destroy (other.gameObject);
