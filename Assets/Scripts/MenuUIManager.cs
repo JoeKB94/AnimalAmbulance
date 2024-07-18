@@ -6,6 +6,7 @@ using TMPro;
 
 public class MenuUIManager : MonoBehaviour
 {
+    public GameObject QuitMenu;
    
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,15 @@ public class MenuUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        EscapeKey();
+    }
+
+    public void EscapeKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitMenu.SetActive(!QuitMenu.activeSelf);
+        }
     }
 
     public void LoadGameScene()
