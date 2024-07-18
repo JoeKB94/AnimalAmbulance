@@ -9294,6 +9294,18 @@ PrefabInstance:
       propertyPath: pointValue
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 615512163683032973, guid: e13f3d1350e188540b38de36443132cd, type: 3}
+      propertyPath: healthValue
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 615512163683032973, guid: e13f3d1350e188540b38de36443132cd, type: 3}
+      propertyPath: healthUpValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 615512163683032973, guid: e13f3d1350e188540b38de36443132cd, type: 3}
+      propertyPath: healthDownValue
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 3466612854293240829, guid: e13f3d1350e188540b38de36443132cd, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.202

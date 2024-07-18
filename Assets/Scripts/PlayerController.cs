@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour
 
     // Sets a variable for point to be added to score.
     public int pointValue;
-
-    public int healthValue;
+    public int healthDownValue;
+    public int speedValue;
+    public int healthUpValue;
 
     // Start is called before the first frame update
     void Start()
@@ -68,14 +69,19 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // On collision checks tag and if correct, does an action.
-        if (other.CompareTag("Powerup")) 
+        if (other.CompareTag("PowerUp")) 
         {
             Destroy(other.gameObject);
+        }
+        if (other.CompareTag("HealthUp"))
+        {
+            Destroy(other.gameObject);
+            gameManager.UpdateHealth(healthUpValue);
         }
         if (other.CompareTag("Enemy"))
         {
             Destroy (other.gameObject);
-            gameManager.UpdateHealth(healthValue);
+            gameManager.UpdateHealth(healthDownValue);
         }
         if (other.CompareTag("Animal"))
         {
