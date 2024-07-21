@@ -7118,6 +7118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859706608}
   - component: {fileID: 859706609}
+  - component: {fileID: 859706610}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -7154,6 +7155,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 410680358}
   healthText: {fileID: 1537245909}
+--- !u!114 &859706610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859706607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ce6590da25b964794aa678da1d49d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 2946217545669599868, guid: 35c078b670773ea4c9ec3c5f9d694aea, type: 3}
+  - {fileID: 8139767923986292325, guid: 5a6fed776273d144982f3150481c6e70, type: 3}
+  animals:
+  - {fileID: 7703520925750144717, guid: e17d77fcb2b1a0449a00e372f1870111, type: 3}
+  - {fileID: 5688287020688333060, guid: b11e76400c3845347829e88f60ef83a2, type: 3}
+  - {fileID: 3209870644475261590, guid: 458a634bda84307498a07de05b67253f, type: 3}
+  - {fileID: 4790967172823287474, guid: cacde3f3f41814449971dd157aa8e70f, type: 3}
+  - {fileID: 5091728828384386056, guid: 9c6bf33b7ab2f0d45922834b9307343e, type: 3}
+  powerups:
+  - {fileID: 7728634237414999287, guid: df113849d598f344293bddc0d2ca574f, type: 3}
+  - {fileID: 420510672842050487, guid: e4202e17d7d72d64da912df442a7373f, type: 3}
 --- !u!1 &865138168
 GameObject:
   m_ObjectHideFlags: 0
@@ -16614,62 +16639,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1029753888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2112553141
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2112553143}
-  - component: {fileID: 2112553142}
-  m_Layer: 0
-  m_Name: Spawn Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2112553142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112553141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47219ecf32eec974ca0f4587354457e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 2946217545669599868, guid: 35c078b670773ea4c9ec3c5f9d694aea, type: 3}
-  - {fileID: 8139767923986292325, guid: 5a6fed776273d144982f3150481c6e70, type: 3}
-  animals:
-  - {fileID: 7703520925750144717, guid: e17d77fcb2b1a0449a00e372f1870111, type: 3}
-  - {fileID: 5688287020688333060, guid: b11e76400c3845347829e88f60ef83a2, type: 3}
-  - {fileID: 3209870644475261590, guid: 458a634bda84307498a07de05b67253f, type: 3}
-  - {fileID: 4790967172823287474, guid: cacde3f3f41814449971dd157aa8e70f, type: 3}
-  - {fileID: 5091728828384386056, guid: 9c6bf33b7ab2f0d45922834b9307343e, type: 3}
-  powerups:
-  - {fileID: 7728634237414999287, guid: df113849d598f344293bddc0d2ca574f, type: 3}
-  - {fileID: 420510672842050487, guid: e4202e17d7d72d64da912df442a7373f, type: 3}
---- !u!4 &2112553143
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112553141}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4130843, y: 3.8745143, z: 1.4068768}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &370497146531841370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16732,11 +16701,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 615512163683032973, guid: e13f3d1350e188540b38de36443132cd, type: 3}
       propertyPath: healthUpValue
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 615512163683032973, guid: e13f3d1350e188540b38de36443132cd, type: 3}
       propertyPath: healthDownValue
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3466612854293240829, guid: e13f3d1350e188540b38de36443132cd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16918,7 +16887,6 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 859706608}
-  - {fileID: 2112553143}
   - {fileID: 1929249702}
   - {fileID: 455940542}
   - {fileID: 283385645}

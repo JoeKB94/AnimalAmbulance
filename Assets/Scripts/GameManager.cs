@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public void UpdateHealth (int healthToAdd)
     {
         health += healthToAdd;
+        health = Mathf.Clamp(health, 0, 100); // Limit health to a range of 0 to 100
         healthText.text = "Health " + health + "%";
     }
 }
