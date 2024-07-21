@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     // Sets variable for the score.
     private int score;
     private int health;
+
+    //
+    public GameObject GameOverMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,27 @@ public class GameManager : MonoBehaviour
     {
         health += healthToAdd;
         health = Mathf.Clamp(health, 0, 100); // Limit health to a range of 0 to 100
+
+        if (health <= 0)
+        {
+            Time.timeScale = 0;
+            GameOverMenu.SetActive(true);
+            Debug.Log("Game Over");
+        }
+
         healthText.text = "Health " + health + "%";
     }
+
+    // Loads the menu, is connected to UI button to trigger action.
+    public void LoadMenuScene()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void LoadGameScene()
+    {
+        SceneManager.LoadScene("Game");
+        Time.timeScale = 1;
+    }
+
 }
