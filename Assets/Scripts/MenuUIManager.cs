@@ -6,6 +6,7 @@ using TMPro;
 
 public class MenuUIManager : MonoBehaviour
 {
+    // Variable to aquire and use the QuitMenu in this script. 
     public GameObject QuitMenu;
    
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class MenuUIManager : MonoBehaviour
         EscapeKey();
     }
 
+    // Opens the quit menu when ESC is pressed.
     public void EscapeKey()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -28,11 +30,13 @@ public class MenuUIManager : MonoBehaviour
         }
     }
 
+    // Loads the game, is connected to UI button to trigger action.
     public void LoadGameScene()
     {
         SceneManager.LoadScene("Game");
     }
 
+    // Quits the game both in editor as standalone build, activated by a UI button.
     public void QuitGame()
     {
 #if UNITY_STANDALONE
