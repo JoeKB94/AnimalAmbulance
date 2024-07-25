@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float boostedSpeed = 50.0f;
 
     // Variable to set the duration on the speedboost.
-    private float boostDuration = 5.0f;
+    private float boostDuration = 10.0f;
 
     // Range that the player can move on the x-axis.
     private float moveRangeX = 22.0f;

@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     // Variable to get Text UI elements.
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI levelText;
 
-    // Sets variable for the score.
+    // Sets variable for the score, health and level.
     private int score;
     private int health;
+    private int level;
 
     //
     public GameObject GameOverMenu;
@@ -23,21 +25,24 @@ public class GameManager : MonoBehaviour
     {
         UpdateHealth(100);
         UpdateScore(0);
+        level = 1;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateLevel(0);
     }
 
-    // Methode that updates the score in the UI.
+    // Methode that updates the score vlaue.
     public void UpdateScore (int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
     }
 
+    // Method that updats the health value.
     public void UpdateHealth (int healthToAdd)
     {
         health += healthToAdd;
@@ -51,6 +56,14 @@ public class GameManager : MonoBehaviour
         }
 
         healthText.text = "Health " + health + "%";
+    }
+
+    // Method that registers which level the game currently is at.
+    public void UpdateLevel(int levelToAdd)
+    {
+        int stage = Mathf.FloorToInt(score / 100);
+        level = Mathf.Max(1, stage + 1);
+        levelText.text = "Level: " + level;
     }
 
     // Loads the menu, is connected to UI button to trigger action.

@@ -24,16 +24,16 @@ public class PEAManager : MonoBehaviour
     // Set spawn timings
     private float startDelay = 1.0f;
     private float enemySpawnTime = 3.0f;
-    private float animalSpawnTime = 1.0f;
-    private float powerupSpawnTime = 5.0f;
+    private float animalSpawnTime = 2.5f;
+    private float powerupSpawnTime = 15.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         // Creates set pools at the start of the game.
-        CreatePool("Animal", 5, animals);
-        CreatePool("Enemy", 2, enemies);
-        CreatePool("PowerUp", 2, powerups);
+        CreatePool("Animal", 15, animals);
+        CreatePool("Enemy", 10, enemies);
+        CreatePool("PowerUp", 8, powerups);
 
         // repeats the given methodes from the start of the game.
         InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
