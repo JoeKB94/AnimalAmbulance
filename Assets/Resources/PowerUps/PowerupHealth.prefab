@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4002188410996029864}
   - component: {fileID: 1765548620339291997}
   - component: {fileID: 5719615796551175998}
+  - component: {fileID: 8880332355771863679}
   - component: {fileID: 5068441921417463114}
   m_Layer: 0
   m_Name: PowerupHealth
@@ -123,6 +124,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &8880332355771863679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728634237414999287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ef0292f87b5884c91672d141d301cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUp: 20
 --- !u!65 &5068441921417463114
 BoxCollider:
   m_ObjectHideFlags: 0
