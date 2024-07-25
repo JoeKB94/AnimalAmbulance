@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Variable to set player movement speed.
+    // Variables to set player movement speeds.
     private float speed = 25.0f;
+    private float normalSpeed = 25.0f;
+    private float boostedSpeed = 50.0f;
+
+    // Variable to set the duration on the speedboost.
+    private float boostDuration = 5.0f;
 
     // Range that the player can move on the x-axis.
     private float moveRangeX = 22.0f;
@@ -70,11 +75,22 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("PowerUp")) 
         {
             Destroy(other.gameObject);
+            StartCoroutine(SpeedBoostCoroutine());
         }
         if (other.CompareTag("Animal"))
         {
             Destroy (other.gameObject);
             gameManager.UpdateScore(pointValue);
         }
+    }
+
+    // Coroutine for a speedboost to the player.
+    private IEnumerator SpeedBoostCoroutine()
+    {
+        speed = boostedSpeed; // Set the boosted speed
+
+        yield return new WaitForSeconds(boostDuration); // Wait for the boost duration
+
+        speed = normalSpeed; // Return to normal speed
     }
 }
