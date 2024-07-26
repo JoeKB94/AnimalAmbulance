@@ -66,6 +66,11 @@ public class GameManager : MonoBehaviour
         levelText.text = "Level: " + level;
     }
 
+    public int GetLevel()
+    {
+        return level;
+    }
+
     // Loads the menu, is connected to UI button to trigger action.
     public void LoadMenuScene()
     {
