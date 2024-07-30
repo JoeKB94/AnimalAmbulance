@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour
     // Sets variables for UI objects in engine. 
     public GameObject GameOverMenu;
     public GameObject PauseMenu;
+    public GameObject StartMenu;
 
     // Awake is called when the scene is loaded
     void Awake()
     {
         Time.timeScale = 0;
+        StartMenu.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -35,7 +37,6 @@ public class GameManager : MonoBehaviour
     {
         UpdateHealth(100);
         UpdateScore(0);
-        PauseButton();
         level = 1;
        
     }
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
     {
         UpdateLevel(0);
         PauseButton();
+        EscapeKey();
+        EnterKey();
     }
 
     // Methode that updates the score vlaue.
@@ -78,11 +81,32 @@ public class GameManager : MonoBehaviour
         levelText.text = "Level: " + level;
     }
 
+    // Returns a level value that can be used by other scripts.
     public int GetLevel()
     {
         return level;
     }
 
+    // Sets action to start the game, also deactivates UI-element.
+    public void EnterKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Time.timeScale = 1;
+            StartMenu.SetActive(false);
+        }
+    }
+
+    // Sets action if Escape button is pressed.
+    public void EscapeKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
+    // Sets action if P (pause) button is pressed.
     public void PauseButton()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -114,10 +138,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    // Method to restart the game.
     public void LoadGameScene()
     {
         SceneManager.LoadScene("Game");
-        Time.timeScale = 1;
     }
 
     // Quits the game both in editor as standalone build, activated by a UI button.
