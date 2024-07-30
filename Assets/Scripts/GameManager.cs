@@ -17,14 +17,25 @@ public class GameManager : MonoBehaviour
     private int health;
     private int level;
 
-    //
+    // Variables to determine if game is active or paused.
+    private bool isPaused = false;
+   
+    // Sets variables for UI objects in engine. 
     public GameObject GameOverMenu;
+    public GameObject PauseMenu;
+
+    // Awake is called when the scene is loaded
+    void Awake()
+    {
+        Time.timeScale = 0;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateHealth(100);
         UpdateScore(0);
+        PauseButton();
         level = 1;
        
     }
@@ -33,6 +44,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateLevel(0);
+        PauseButton();
     }
 
     // Methode that updates the score vlaue.
@@ -71,6 +83,31 @@ public class GameManager : MonoBehaviour
         return level;
     }
 
+    public void PauseButton()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePause();            
+        }
+    }
+    // Function to pause an active game.
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+            PauseMenu.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            PauseMenu.SetActive(false);
+        }
+    }
+
+
     // Loads the menu, is connected to UI button to trigger action.
     public void LoadMenuScene()
     {
@@ -81,6 +118,18 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
         Time.timeScale = 1;
+    }
+
+    // Quits the game both in editor as standalone build, activated by a UI button.
+    public void QuitGame()
+    {
+#if UNITY_STANDALONE
+Application.Quit();
+#endif
+
+#if UNITY_EDITOR
+UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
 }
