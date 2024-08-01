@@ -36,6 +36,11 @@ public class MenuUIManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    public void LoadHighScoreScene()
+    {
+        SceneManager.LoadScene("HighScore");
+    }
+
     // Quits the game both in editor as standalone build, activated by a UI button.
     public void QuitGame()
     {

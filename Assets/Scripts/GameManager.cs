@@ -131,7 +131,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     // Loads the menu, is connected to UI button to trigger action.
     public void LoadMenuScene()
     {
@@ -142,6 +141,11 @@ public class GameManager : MonoBehaviour
     public void LoadGameScene()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void LoadHighScoreScene()
+    {
+        SceneManager.LoadScene("HighScore");
     }
 
     // Quits the game both in editor as standalone build, activated by a UI button.
