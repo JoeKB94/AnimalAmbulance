@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     // Sets variable for GameManager script.
     private GameManager gameManager;
 
+    // 
+    public GameObject FirstAidKit;
+
     // Sets a variable for point to be added to score.
     public int pointValue;
     
@@ -34,12 +37,7 @@ public class PlayerController : MonoBehaviour
         // Calls upon programmed methodes (see futher down in code).
         PlayerMovement();
         ConstrainPlayerBound();
-         
-        // Gets spacebar input from the player.  
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // Action to throw a net will be coded here.
-        }
+        FireFirstAid();
     }
 
     // Moves the player based on input.
@@ -84,8 +82,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Coroutine for a speedboost to the player.
-    private IEnumerator SpeedBoostCoroutine()
+    void FireFirstAid()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(FirstAidKit, transform.position, FirstAidKit.transform.rotation);
+        }
+    }
+
+        // Coroutine for a speedboost to the player.
+        private IEnumerator SpeedBoostCoroutine()
     {
         speed = boostedSpeed; // Set the boosted speed
 

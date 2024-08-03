@@ -19553,6 +19553,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 615512163683032973, guid: e13f3d1350e188540b38de36443132cd, type: 3}
+      propertyPath: FirstAidKit
+      value: 
+      objectReference: {fileID: 4696931177753467784, guid: 6f634fe143bad094ab7fa0f3ab48f98e, type: 3}
+    - target: {fileID: 615512163683032973, guid: e13f3d1350e188540b38de36443132cd, type: 3}
       propertyPath: healthValue
       value: -20
       objectReference: {fileID: 0}
