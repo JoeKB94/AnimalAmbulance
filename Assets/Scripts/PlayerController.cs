@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     // Sets variable for GameManager script.
     private GameManager gameManager;
 
-    // 
+    // Sets AidKit gameobejct.
     public GameObject FirstAidKit;
 
     // Sets a variable for point to be added to score.
@@ -75,13 +75,9 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             StartCoroutine(SpeedBoostCoroutine());
         }
-        if (other.CompareTag("Animal"))
-        {
-            Destroy (other.gameObject);
-            gameManager.UpdateScore(pointValue);
-        }
     }
 
+    // Shoots a Aidkit when SPACE is pressed.
     void FireFirstAid()
     {
         if (Input.GetKeyDown(KeyCode.Space))

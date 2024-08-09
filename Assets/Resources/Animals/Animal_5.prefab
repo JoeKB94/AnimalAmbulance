@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 105870346061572991}
   - component: {fileID: 7078928822339163417}
   - component: {fileID: 6156608866004911718}
-  - component: {fileID: 8559195249168034150}
+  - component: {fileID: -9193889337881201299}
   m_Layer: 0
   m_Name: Animal_5
   m_TagString: Animal
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.83571863, y: 2.2298641, z: 2.687743}
   m_Center: {x: -0.015294075, y: 0.53633785, z: -0.38046765}
---- !u!114 &8559195249168034150
+--- !u!114 &-9193889337881201299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +116,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5091728828384386056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f923c0f7b481124dad96cf2d6441485, type: 3}
+  m_Script: {fileID: 11500000, guid: ed28570928bd60f4fb122a0e70f65867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 6
 --- !u!1001 &1233000467854974926
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarEnemy : MonoBehaviour
+public class AnimalMain : MonoBehaviour
 {
     // Sets variable to access a diferent script.
     private GameManager gameManager;
 
-    // Set damage amount.
-    private int damageDealt = -10;
+    // Sets score increase amount.
+    private int scoreIncrease = 10;
 
-    // Set speed of movement.
-    private float speed = 7.0f;
-
+    // Sets speed for movement.
+    private float speed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +23,27 @@ public class CarEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveEnemy();
+        MoveAnimal(); // Activates movement of the animals after instantiation.
     }
 
-    // Method the move the enemy after instantiation.
-    void MoveEnemy()
+    // Method to move the animal after activation/instantiation.
+    void MoveAnimal()
     {
         transform.Translate(Vector3.back * speed * Time.deltaTime);
     }
 
-    // On trigger Health is updated and gameobject that has this script will be destroyed.
+    // On trigger Score is updated and gameobject that has this script will be destroyed.
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            gameManager.UpdateHealth(damageDealt);
+            gameManager.UpdateScore(scoreIncrease);
+        }
+        else if (other.CompareTag("AidKit"))
+        {
+            Destroy(gameObject);
+            gameManager.UpdateScore(scoreIncrease * 2);
         }
     }
 }

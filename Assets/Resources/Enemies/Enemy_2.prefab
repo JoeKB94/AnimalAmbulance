@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6618102239322236036}
   - component: {fileID: 3656927693766519089}
   - component: {fileID: 2790183388061456789}
-  - component: {fileID: 1569886957493705783}
   - component: {fileID: 6741267462344266023}
   m_Layer: 0
   m_Name: Enemy_2
@@ -108,19 +107,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.263055, y: 1.731607, z: 5.2646174}
   m_Center: {x: 0.007880592, y: 0.7001515, z: 0.04351089}
---- !u!114 &1569886957493705783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8139767923986292325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f923c0f7b481124dad96cf2d6441485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSpeed: 7
 --- !u!114 &6741267462344266023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageDealt: -10
+  speed: 25
 --- !u!1001 &5805045515674261253
 PrefabInstance:
   m_ObjectHideFlags: 0

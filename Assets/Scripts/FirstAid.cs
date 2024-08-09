@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FirstAid : MonoBehaviour
 {
+    // Variable for movement speed of the first aid kit. 
     private float speed = 25.0f;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,19 +16,21 @@ public class FirstAid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveFirstAid();
+        MoveFirstAid(); // makes sure that the Aidkit moves once it's instantiated.
     }
 
+
+    // Methode to move the AidKit.
     void MoveFirstAid()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider col)
+    // Checks trigger on collider and the destroys both objects if tag matches. 
+    private void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.CompareTag("AidKit"))
+        if (other.CompareTag("Enemy") || other.CompareTag("PowerUp") || other.CompareTag("HealthUp") || other.CompareTag("Animal"))
         {
-            Destroy(col.gameObject);
             Destroy(gameObject);
         }
     }

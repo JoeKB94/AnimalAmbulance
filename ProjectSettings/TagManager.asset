@@ -9,7 +9,7 @@ TagManager:
   - Ground
   - HealthUp
   - PowerUp
-  - AidKIt
+  - AidKit
   layers:
   - Default
   - TransparentFX
