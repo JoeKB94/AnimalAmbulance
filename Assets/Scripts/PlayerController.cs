@@ -15,11 +15,16 @@ public class PlayerController : MonoBehaviour
     // Range that the player can move on the x-axis.
     private float moveRangeX = 22.0f;
 
+    // Variables to limit amount of AidKits being fired.
+    private float fireCooldown = 2.0f;
+    private float lastFireTime = 0.0f;
+
     // Sets variable for GameManager script.
     private GameManager gameManager;
 
-    // Sets AidKit gameobejct.
+    // Sets gameobject variables.
     public GameObject FirstAidKit;
+    public GameObject AmbulanceLights;
 
     // Sets a variable for point to be added to score.
     public int pointValue;
@@ -80,9 +85,10 @@ public class PlayerController : MonoBehaviour
     // Shoots a Aidkit when SPACE is pressed.
     void FireFirstAid()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastFireTime >= fireCooldown)
         {
             Instantiate(FirstAidKit, transform.position, FirstAidKit.transform.rotation);
+            lastFireTime = Time.time;
         }
     }
 
@@ -90,9 +96,11 @@ public class PlayerController : MonoBehaviour
         private IEnumerator SpeedBoostCoroutine()
     {
         speed = boostedSpeed; // Set the boosted speed
+        AmbulanceLights.SetActive(true);
 
         yield return new WaitForSeconds(boostDuration); // Wait for the boost duration
 
         speed = normalSpeed; // Return to normal speed
+        AmbulanceLights.SetActive(false);
     }
 }
