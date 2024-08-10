@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class AnimalMain : MonoBehaviour
 {
+    // Reference for the ScriptableObject script.
+    public AnimalScriptableObject animalAttributes;
+
     // Sets variable to access a diferent script.
     private GameManager gameManager;
-
-    // Sets score increase amount.
-    private int scoreIncrease = 10;
-
-    // Sets speed for movement.
-    private float speed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +26,11 @@ public class AnimalMain : MonoBehaviour
     // Method to move the animal after activation/instantiation.
     void MoveAnimal()
     {
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        // Access the speed from the ScriptableObject.
+        float currentSpeed = animalAttributes.speed;
+
+        // Transform action.
+        transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
     }
 
     // On trigger Score is updated and gameobject that has this script will be destroyed.
@@ -38,12 +39,12 @@ public class AnimalMain : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            gameManager.UpdateScore(scoreIncrease);
+            gameManager.UpdateScore(animalAttributes.scoreIncrease);
         }
         else if (other.CompareTag("AidKit"))
         {
             Destroy(gameObject);
-            gameManager.UpdateScore(scoreIncrease * 2);
+            gameManager.UpdateScore(animalAttributes.scoreIncrease * 2);
         }
     }
 }

@@ -41,6 +41,5 @@ public class MoveObjects : MonoBehaviour
     void UpdateLevelSpeed(int updateLevel)
     {
         levelSpeed = baseSpeed + updateLevel;
-        Debug.Log(levelSpeed);
     }
 }

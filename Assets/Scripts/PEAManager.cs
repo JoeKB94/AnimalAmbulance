@@ -31,7 +31,7 @@ public class PEAManager : MonoBehaviour
     void Start()
     {
         // Creates set pools at the start of the game.
-        CreatePool("Animal", 15, animals);
+        CreatePool("Animal", 50, animals);
         CreatePool("Enemy", 10, enemies);
         CreatePool("PowerUp", 8, powerups);
 
