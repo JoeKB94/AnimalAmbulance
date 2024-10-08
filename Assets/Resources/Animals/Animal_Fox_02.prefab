@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 1106517691724741258}
   - component: {fileID: 6952270891647985270}
   - component: {fileID: 6405737843685102941}
+  - component: {fileID: 8703281156357419015}
   m_Layer: 0
   m_Name: Animal_Fox_02
   m_TagString: Animal
@@ -674,6 +675,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: cf07a59d9b2f6834495ab4c5c46e8a9a, type: 2}
+--- !u!65 &8703281156357419015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262773159891485958}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.085, y: 0.2, z: 0.32}
+  m_Center: {x: 0, y: 0.1, z: 0.015}
 --- !u!1 &6284120628765620574
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6024310471572172262}
   - component: {fileID: 5953211388020248174}
-  - component: {fileID: 4749863197941682048}
   m_Layer: 0
   m_Name: SM_Fox_02
   m_TagString: Animal
@@ -845,27 +866,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000059604645, y: -0.029301882, z: 0.073896945}
     m_Extent: {x: 0.040517867, y: 0.104077205, z: 0.1580456}
   m_DirtyAABB: 0
---- !u!65 &4749863197941682048
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6689131255764271130}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.08103573, y: 0.20815443, z: 0.3160912}
-  m_Center: {x: -0.000000059604645, y: -0.029301867, z: 0.073896945}
 --- !u!1 &6858232627671493589
 GameObject:
   m_ObjectHideFlags: 0

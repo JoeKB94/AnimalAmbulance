@@ -1759,7 +1759,6 @@ GameObject:
   m_Component:
   - component: {fileID: 560901621458084071}
   - component: {fileID: 2912082789986187521}
-  - component: {fileID: 8712334844220479299}
   m_Layer: 0
   m_Name: SA_Animal_Horse_Brown
   m_TagString: Animal
@@ -1875,27 +1874,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: -0.8832464, z: 11.784651}
     m_Extent: {x: 5.571748, y: 18.315586, z: 21.710882}
   m_DirtyAABB: 0
---- !u!65 &8712334844220479299
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7951488747334216846}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 11.143496, y: 36.631172, z: 43.421764}
-  m_Center: {x: 0, y: 18.315582, z: 4.33708}
 --- !u!1 &8551568025939004113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +1947,7 @@ GameObject:
   - component: {fileID: 1839087251587303882}
   - component: {fileID: 8168454850413198865}
   - component: {fileID: 5549372056136254920}
+  - component: {fileID: 5875623378054739818}
   m_Layer: 0
   m_Name: Animal_Horse_Brown
   m_TagString: Animal
@@ -2031,6 +2010,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: cf07a59d9b2f6834495ab4c5c46e8a9a, type: 2}
+--- !u!65 &5875623378054739818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656350364790253674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 40, z: 45}
+  m_Center: {x: 0, y: 20, z: 4}
 --- !u!1 &9020068700507594221
 GameObject:
   m_ObjectHideFlags: 0

@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 6366885818191998496}
   - component: {fileID: 2542816702109301344}
   - component: {fileID: 8628554040720758678}
+  - component: {fileID: 642093396131138258}
   m_Layer: 0
   m_Name: Animal_Chicken_Brown
   m_TagString: Animal
@@ -241,6 +242,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: cfaae7a3949a56d45a0508bd6af05ea0, type: 2}
+--- !u!65 &642093396131138258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754064424863964991}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 17, z: 22}
+  m_Center: {x: 0, y: 8, z: 0.8}
 --- !u!1 &1005025669593514696
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +1007,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1172913123596724753}
   - component: {fileID: 3646696600244313675}
-  - component: {fileID: 3032582310792000530}
   m_Layer: 0
   m_Name: SA_Animals_Chicken_Brown
   m_TagString: Animal
@@ -1079,27 +1100,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000009536743, y: -0.07978153, z: 1.2678552}
     m_Extent: {x: 3.9085295, y: 8.594743, z: 10.12587}
   m_DirtyAABB: 0
---- !u!65 &3032582310792000530
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8172050617265873124}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7.8170586, y: 17.189486, z: 20.25174}
-  m_Center: {x: 0.0000009536743, y: 8.594731, z: 1.2678552}
 --- !u!1 &8215092690968269187
 GameObject:
   m_ObjectHideFlags: 0

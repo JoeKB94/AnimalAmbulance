@@ -3287,6 +3287,7 @@ GameObject:
   - component: {fileID: 6986841190848503176}
   - component: {fileID: 7713466023760562212}
   - component: {fileID: 5518144165747219750}
+  - component: {fileID: 409375202729409247}
   m_Layer: 0
   m_Name: Animal_SaintBernard
   m_TagString: Animal
@@ -3380,6 +3381,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: 6e029f30b2e86df49b9c45197e477d7e, type: 2}
+--- !u!65 &409375202729409247
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374604665076782881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.11, y: 0.2, z: 0.3}
+  m_Center: {x: 0, y: 0.1, z: 0.015}
 --- !u!1 &5413491982979878908
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,7 +4323,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5350117146741700614}
   - component: {fileID: 3168496309541811633}
-  - component: {fileID: 7835955154268766351}
   m_Layer: 0
   m_Name: SM_SaintBernard_01
   m_TagString: Animal
@@ -4422,27 +4443,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000000018626451, y: -0.02942187, z: 0.09284967}
     m_Extent: {x: 0.060743935, y: 0.10395722, z: 0.13604975}
   m_DirtyAABB: 0
---- !u!65 &7835955154268766351
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6499530465136118702}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.12148788, y: 0.20791444, z: 0.2720995}
-  m_Center: {x: -0.0000000018626451, y: 0.1039572, z: 0.00095933676}
 --- !u!1 &6593287868607225666
 GameObject:
   m_ObjectHideFlags: 0

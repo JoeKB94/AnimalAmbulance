@@ -1040,7 +1040,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1655141899080593701}
   - component: {fileID: 7150640844182564786}
-  - component: {fileID: 7198601607417096541}
   m_Layer: 0
   m_Name: SM_Beagle_01
   m_TagString: Animal
@@ -1161,27 +1160,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000000018626451, y: -0.03184109, z: 0.09069148}
     m_Extent: {x: 0.053976044, y: 0.101537995, z: 0.13445887}
   m_DirtyAABB: 0
---- !u!65 &7198601607417096541
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443560460808001117}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.10795209, y: 0.20307599, z: 0.26891774}
-  m_Center: {x: -0.0000000018626451, y: 0.10153798, z: -0.001198858}
 --- !u!1 &1510117329837857876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,6 +2495,7 @@ GameObject:
   - component: {fileID: 1067490789237992349}
   - component: {fileID: 3332446142461548519}
   - component: {fileID: 5169677468808150509}
+  - component: {fileID: 2895447325880113584}
   m_Layer: 0
   m_Name: Animal_Beagle
   m_TagString: Animal
@@ -2533,7 +2512,7 @@ Transform:
   m_GameObject: {fileID: 3328640216580702677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 48.18, y: 0.00000023841858, z: 64.57706}
+  m_LocalPosition: {x: 48.18, y: -0.01, z: 64.57706}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2610,6 +2589,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: cfaae7a3949a56d45a0508bd6af05ea0, type: 2}
+--- !u!65 &2895447325880113584
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328640216580702677}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.2, z: 0.28}
+  m_Center: {x: 0, y: 0.1, z: 0.025}
 --- !u!1 &3351342717023593461
 GameObject:
   m_ObjectHideFlags: 0

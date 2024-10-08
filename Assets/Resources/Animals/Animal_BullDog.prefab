@@ -495,7 +495,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8552227833062763806}
   - component: {fileID: 7739175610601242593}
-  - component: {fileID: 5183769592765696819}
   m_Layer: 0
   m_Name: SM_BullDog_01
   m_TagString: Animal
@@ -615,27 +614,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000000037252903, y: -0.031677894, z: 0.09405647}
     m_Extent: {x: 0.069370374, y: 0.10170119, z: 0.1267545}
   m_DirtyAABB: 0
---- !u!65 &5183769592765696819
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809920087237781826}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.13874076, y: 0.2034024, z: 0.253509}
-  m_Center: {x: -0.0000000037252903, y: 0.10170119, z: 0.0021670908}
 --- !u!1 &1077507403534192100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,6 +4782,7 @@ GameObject:
   - component: {fileID: 7813416216273802588}
   - component: {fileID: 2115024418868136616}
   - component: {fileID: 6032779335162097609}
+  - component: {fileID: 3703993921713065632}
   m_Layer: 0
   m_Name: Animal_BullDog
   m_TagString: Animal
@@ -4897,6 +4876,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: cfaae7a3949a56d45a0508bd6af05ea0, type: 2}
+--- !u!65 &3703993921713065632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7176321554937810302}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12, y: 0.2, z: 0.25}
+  m_Center: {x: 0, y: 0.1, z: 0.028}
 --- !u!1 &7221237548347016425
 GameObject:
   m_ObjectHideFlags: 0

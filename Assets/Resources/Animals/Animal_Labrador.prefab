@@ -4553,6 +4553,7 @@ GameObject:
   - component: {fileID: 6724968457932176599}
   - component: {fileID: 9048398767186563656}
   - component: {fileID: 4770451042951848231}
+  - component: {fileID: 5064497893860687723}
   m_Layer: 0
   m_Name: Animal_Labrador
   m_TagString: Animal
@@ -4646,6 +4647,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: 6e029f30b2e86df49b9c45197e477d7e, type: 2}
+--- !u!65 &5064497893860687723
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998596502110599303}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.2, z: 0.28}
+  m_Center: {x: 0, y: 0.1, z: 0.022}
 --- !u!1 &7273351228731300962
 GameObject:
   m_ObjectHideFlags: 0
@@ -5816,7 +5838,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2863915657725359919}
   - component: {fileID: 8015768845788782593}
-  - component: {fileID: 8100905606962487538}
   m_Layer: 0
   m_Name: SM_Labrador_01
   m_TagString: Animal
@@ -5937,27 +5958,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000000037252903, y: -0.03245338, z: 0.09057998}
     m_Extent: {x: 0.047784913, y: 0.10092571, z: 0.134774}
   m_DirtyAABB: 0
---- !u!65 &8100905606962487538
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8547141168483217461}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.095569834, y: 0.20185143, z: 0.269548}
-  m_Center: {x: -0.0000000037252907, y: 0.1009257, z: -0.0013108253}
 --- !u!1 &8781392684532766678
 GameObject:
   m_ObjectHideFlags: 0
