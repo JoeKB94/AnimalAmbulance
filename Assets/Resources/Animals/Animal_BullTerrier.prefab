@@ -1684,9 +1684,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7093570218211411146}
   - component: {fileID: 204455257598836753}
+  - component: {fileID: 4054542432209486857}
   m_Layer: 0
   m_Name: SM_BullTerrier_01
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1801,6 +1802,27 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000007450581, y: -0.02603675, z: 0.08948564}
     m_Extent: {x: 0.045073755, y: 0.10734233, z: 0.1378726}
   m_DirtyAABB: 0
+--- !u!65 &4054542432209486857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2540766241288470626}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.09014751, y: 0.21468467, z: 0.2757452}
+  m_Center: {x: -0.000000007450581, y: 0.10734232, z: -0.0024046972}
 --- !u!1 &2556848036384153081
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,7 +2159,7 @@ GameObject:
   - component: {fileID: 7907490917449808826}
   m_Layer: 0
   m_Name: Animal_BullTerrier
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
