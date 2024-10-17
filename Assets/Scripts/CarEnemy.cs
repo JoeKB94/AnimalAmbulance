@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class CarEnemy : MonoBehaviour
 {
+    // Reference for the ScriptableObject script.
+    public EnemyScriptableObject enemyAttributes;
+    
     // Sets variable to access a diferent script.
     private GameManager gameManager;
-
-    // Set damage amount.
-    private int damageDealt = -10;
-
-    // Set speed of movement.
-    private float speed = 7.0f;
 
 
     // Start is called before the first frame update
@@ -24,13 +21,17 @@ public class CarEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveEnemy();
+        MoveEnemy(); // Activates movement of the enemies after instantiation.
     }
 
     // Method the move the enemy after instantiation.
     void MoveEnemy()
     {
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        // Acces the speed from the ScriptableObject. 
+        float currentSpeed = enemyAttributes.speed;
+
+        // Transform action.
+        transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
     }
 
     // On trigger Health is updated and gameobject that has this script will be destroyed.
@@ -39,7 +40,7 @@ public class CarEnemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            gameManager.UpdateHealth(damageDealt);
+            gameManager.UpdateHealth(enemyAttributes.damageDealt);
         }
     }
 }
