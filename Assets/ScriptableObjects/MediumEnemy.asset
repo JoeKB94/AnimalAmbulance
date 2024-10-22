@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MediumEnemy
   m_EditorClassIdentifier: 
   damageDealt: -10
-  speed: -7
+  speed: 7
