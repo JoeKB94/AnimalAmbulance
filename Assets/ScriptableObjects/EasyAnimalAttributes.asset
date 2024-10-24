@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EasyAnimalAttributes
   m_EditorClassIdentifier: 
   scoreIncrease: 10
-  speed: -6
+  speed: 6

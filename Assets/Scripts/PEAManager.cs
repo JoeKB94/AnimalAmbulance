@@ -16,8 +16,8 @@ public class PEAManager : MonoBehaviour
 
     // Set spawn parameters
     private float zSpawnEnemies = 20.0f;
-    private float zSpawnAnimals = 21.0f;
-    private float zSpawnPowerup = 22.0f;
+    private float zSpawnAnimals = 27.0f;
+    private float zSpawnPowerup = 35.0f;
     private float xSpawnRange = 22.0f;
     private float ySpawn = 0.75f;
 
@@ -31,9 +31,9 @@ public class PEAManager : MonoBehaviour
     void Start()
     {
         // Creates set pools at the start of the game.
-        CreatePool("Animal", 50, animals);
-        CreatePool("Enemy", 50, enemies);
-        CreatePool("PowerUp", 8, powerups);
+        CreatePool("Animal", 50, animals, animalPool);
+        CreatePool("Enemy", 50, enemies, enemyPool);
+        CreatePool("PowerUp", 8, powerups, powerupPool);
 
         // repeats the given methodes from the start of the game.
         InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
@@ -41,79 +41,88 @@ public class PEAManager : MonoBehaviour
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    void CreatePool(string type, int initialSize, GameObject[] prefabs, Dictionary<string, Queue<GameObject>> pool)
     {
-        
+        foreach (var prefab in prefabs)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            for (int i = 0; i < initialSize; i++)
+            {
+                GameObject obj = Instantiate(prefab, transform);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
+            }
+            pool.Add(prefab.name, objectPool);
+        }
     }
 
-    // Methode to spawn enemies within an array, in the given range. 
+    bool IsAreaClear(Vector3 position, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(position, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.layer == LayerMask.NameToLayer("BlockingLayer"))
+            {
+                Debug.Log($"Blocking collider detected: {hitCollider.name} at {hitCollider.transform.position}");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void SpawnFromPool(string tag, float zSpawn, Dictionary<string, Queue<GameObject>> pool)
+    {
+        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        Vector3 spawnPos = new Vector3(randomX, ySpawn, zSpawn);
+
+        if (IsAreaClear(spawnPos, 5.0f)) // Adjust radius as needed
+        {
+            if (pool.ContainsKey(tag) && pool[tag].Count > 0)
+            {
+                GameObject objToSpawn = pool[tag].Dequeue();
+
+                if (objToSpawn != null)
+                {
+                    objToSpawn.SetActive(true);
+                    objToSpawn.transform.position = spawnPos;
+                    objToSpawn.transform.rotation = Quaternion.identity; // Reset rotation if needed
+                    pool[tag].Enqueue(objToSpawn);
+
+                    Debug.Log($"{tag} spawned at {spawnPos}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Object to spawn is null for {tag}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"No objects available in pool for {tag} or tag not found");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Spawn area not clear for {tag} at {spawnPos}");
+        }
+    }
+
     void SpawnEnemy()
     {
-        // Randomizes spawn location on the X-Axis. 
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
         // Randomizes spawned object from array.
         int randomIndex = Random.Range(0, enemies.Length);
-
-        // Determines the spawn location within given parameters.
-        Vector3 enemySpawnPos = new Vector3(randomX, ySpawn, zSpawnEnemies);
-
-        // Actually creates object from the chosen array in above mentioned location range.
-        Instantiate(enemies[randomIndex], enemySpawnPos, enemies[randomIndex].gameObject.transform.rotation);
+        SpawnFromPool(enemies[randomIndex].name, zSpawnEnemies, enemyPool);
     }
 
-    // Methode to spawn animals within an array, in the given range. 
     void SpawnAnimal()
     {
-        // Randomizes spawn location on the X-Axis. 
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
-        // Randomizes spawned object from array.
         int randomIndex = Random.Range(0, animals.Length);
-
-        // Determines the spawn location within given parameters.
-        Vector3 animalSpawnPos = new Vector3(randomX, ySpawn, zSpawnAnimals);
-
-        // Actually creates object from the chosen array in above mentioned location range.
-        Instantiate(animals[randomIndex], animalSpawnPos, animals[randomIndex].gameObject.transform.rotation);
+        SpawnFromPool(animals[randomIndex].name, zSpawnAnimals, animalPool);
     }
 
-    // Methode to spawn powerups within an array, in the given range. 
     void SpawnPowerup()
     {
-        // Randomizes spawn location on the X-Axis. 
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
-        // Randomizes spawned object from array.
         int randomIndex = Random.Range(0, powerups.Length);
-
-        // Determines the spawn location within given parameters.
-        Vector3 powerupSpawnPos = new Vector3(randomX, ySpawn, zSpawnPowerup);
-
-        // Actually creates object from the chosen array in above mentioned location range.
-        Instantiate(powerups[randomIndex], powerupSpawnPos, powerups[randomIndex].gameObject.transform.rotation);
-    }
-
-    // Create a pool for a specific prefab type
-    private void CreatePool(string type, int initialSize, GameObject[] prefabs)
-    {
-        Queue<GameObject> pool = new Queue<GameObject>();
-        for (int i = 0; i < initialSize; i++)
-        {
-            // Randomly select an animal prefab
-            int randomIndex = Random.Range(0, prefabs.Length);
-            GameObject prefab = prefabs[randomIndex];
-
-            // Instantiate and parent to the manager
-            GameObject obj = Instantiate(prefab, transform);
-            obj.SetActive(false); // Deactivate initially
-            pool.Enqueue(obj);
-        }
-        // Add to the appropriate pool dictionary
-        if (type == "Enemy")
-            enemyPool[type] = pool;
-        else if (type == "Animal")
-            animalPool[type] = pool;
-        else if (type == "PowerUp")
-            powerupPool[type] = pool;
+        SpawnFromPool(powerups[randomIndex].name, zSpawnPowerup, powerupPool);
     }
 
     // Spawn an object of a specific prefab type
