@@ -4876,6 +4876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: cfaae7a3949a56d45a0508bd6af05ea0, type: 2}
+  detectionRadius: 4
 --- !u!65 &3703993921713065632
 BoxCollider:
   m_ObjectHideFlags: 0

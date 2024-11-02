@@ -15,9 +15,9 @@ public class PEAManager : MonoBehaviour
     private Dictionary<string, Queue<GameObject>> powerupPool = new Dictionary<string, Queue<GameObject>>();
 
     // Set spawn parameters
-    private float zSpawnEnemies = 20.0f;
-    private float zSpawnAnimals = 27.0f;
-    private float zSpawnPowerup = 35.0f;
+    private float zSpawnEnemies = 30.0f;
+    private float zSpawnAnimals = 50.0f;
+    private float zSpawnPowerup = 70.0f;
     private float xSpawnRange = 22.0f;
     private float ySpawn = 0.75f;
 
@@ -31,9 +31,9 @@ public class PEAManager : MonoBehaviour
     void Start()
     {
         // Creates set pools at the start of the game.
-        CreatePool("Animal", 50, animals, animalPool);
-        CreatePool("Enemy", 50, enemies, enemyPool);
-        CreatePool("PowerUp", 8, powerups, powerupPool);
+        CreatePool("Animal", 2, animals, animalPool);
+        CreatePool("Enemy", 2, enemies, enemyPool);
+        CreatePool("PowerUp", 3, powerups, powerupPool);
 
         // repeats the given methodes from the start of the game.
         InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
@@ -88,7 +88,7 @@ public class PEAManager : MonoBehaviour
                     objToSpawn.transform.rotation = Quaternion.identity; // Reset rotation if needed
                     pool[tag].Enqueue(objToSpawn);
 
-                    Debug.Log($"{tag} spawned at {spawnPos}");
+                    // Debug.Log($"{tag} spawned at {spawnPos}");
                 }
                 else
                 {

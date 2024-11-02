@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalAttributes: {fileID: 11400000, guid: cfaae7a3949a56d45a0508bd6af05ea0, type: 2}
+  detectionRadius: 4
 --- !u!1001 &6694204061563950026
 PrefabInstance:
   m_ObjectHideFlags: 0

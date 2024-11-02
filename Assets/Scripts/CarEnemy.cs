@@ -6,15 +6,18 @@ public class CarEnemy : MonoBehaviour
 {
     // Reference for the ScriptableObject script.
     public EnemyScriptableObject enemyAttributes;
-    
-    // Sets variable to access a diferent script.
+
+    // Sets variable to access a different script.
     private GameManager gameManager;
 
+    // Detection radius for collision checking.
+    [SerializeField] 
+    private float detectionRadius = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Gets the GameManager script.
+        // Gets the GameManager script.
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -22,16 +25,44 @@ public class CarEnemy : MonoBehaviour
     void Update()
     {
         MoveEnemy(); // Activates movement of the enemies after instantiation.
+        CheckForCollisions(); // Check for collisions and adjust speed if necessary.
     }
 
-    // Method the move the enemy after instantiation.
+    // Method to move the enemy after instantiation.
     void MoveEnemy()
     {
-        // Acces the speed from the ScriptableObject. 
+        // Access the speed from the ScriptableObject. 
         float currentSpeed = enemyAttributes.speed;
 
         // Transform action.
         transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
+    }
+
+    // Method to check for collisions and adjust speed.
+    void CheckForCollisions()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject != gameObject &&
+                (hitCollider.CompareTag("Animal") || hitCollider.CompareTag("Enemy")))
+            {
+                // Adjust speed to match the other object
+                CarEnemy otherEnemy = hitCollider.GetComponent<CarEnemy>();
+                if (otherEnemy != null)
+                {
+                    enemyAttributes.speed = otherEnemy.enemyAttributes.speed;
+                }
+                else
+                {
+                    AnimalMain otherAnimal = hitCollider.GetComponent<AnimalMain>();
+                    if (otherAnimal != null)
+                    {
+                        enemyAttributes.speed = otherAnimal.animalAttributes.speed;
+                    }
+                }
+            }
+        }
     }
 
     // On trigger Health is updated and gameobject that has this script will be destroyed.
@@ -42,5 +73,12 @@ public class CarEnemy : MonoBehaviour
             Destroy(gameObject);
             gameManager.UpdateHealth(enemyAttributes.damageDealt);
         }
+    }
+
+    // Optional: Visualize the detection radius in the editor
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

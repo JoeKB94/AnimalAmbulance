@@ -7,13 +7,16 @@ public class AnimalMain : MonoBehaviour
     // Reference for the ScriptableObject script.
     public AnimalScriptableObject animalAttributes;
 
-    // Sets variable to access a diferent script.
+    // Sets variable to access a different script.
     private GameManager gameManager;
+
+    // Detection radius for collision checking.
+    [SerializeField] private float detectionRadius = 4.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Gets the GameManager script.
+        // Gets the GameManager script.
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -21,6 +24,7 @@ public class AnimalMain : MonoBehaviour
     void Update()
     {
         MoveAnimal(); // Activates movement of the animals after instantiation.
+        CheckForCollisions(); // Check for collisions and adjust speed if necessary.
     }
 
     // Method to move the animal after activation/instantiation.
@@ -31,6 +35,25 @@ public class AnimalMain : MonoBehaviour
 
         // Transform action.
         transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
+    }
+
+    // Method to check for collisions and adjust speed.
+    void CheckForCollisions()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject != gameObject &&
+                (hitCollider.CompareTag("Animal") || hitCollider.CompareTag("Enemy")))
+            {
+                // Adjust speed to match the other object
+                AnimalMain otherAnimal = hitCollider.GetComponent<AnimalMain>();
+                if (otherAnimal != null)
+                {
+                    animalAttributes.speed = otherAnimal.animalAttributes.speed;
+                }
+            }
+        }
     }
 
     // On trigger Score is updated and gameobject that has this script will be destroyed.
@@ -46,5 +69,12 @@ public class AnimalMain : MonoBehaviour
             Destroy(gameObject);
             gameManager.UpdateScore(animalAttributes.scoreIncrease * 2);
         }
+    }
+
+    // Optional: Visualize the detection radius in the editor
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }
