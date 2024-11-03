@@ -27,18 +27,28 @@ public class PEAManager : MonoBehaviour
     private float animalSpawnTime = 2.5f;
     private float powerupSpawnTime = 15.0f;
 
+    // Reference to the GameManager script.
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Get the GameManger component
+        gameManager = FindObjectOfType<GameManager>();
+
         // Creates set pools at the start of the game.
-        CreatePool("Animal", 2, animals, animalPool);
-        CreatePool("Enemy", 2, enemies, enemyPool);
-        CreatePool("PowerUp", 3, powerups, powerupPool);
+        CreatePool("Animal", 10, animals, animalPool);
+        CreatePool("Enemy", 10, enemies, enemyPool);
+        CreatePool("PowerUp", 8, powerups, powerupPool);
 
         // repeats the given methodes from the start of the game.
         InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
         InvokeRepeating("SpawnAnimal", startDelay, animalSpawnTime);
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+
+        // Check and update spawn times periodically
+        InvokeRepeating("UpdateSpawnTimesLvl5", startDelay, 1.0f); // Checks every second, adjust if needed.
+        InvokeRepeating("UpdateSpawnTimesLvl8", startDelay, 1.0f); // Checks evey second, adjust if needed. 
     }
 
     void CreatePool(string type, int initialSize, GameObject[] prefabs, Dictionary<string, Queue<GameObject>> pool)
@@ -166,5 +176,39 @@ public class PEAManager : MonoBehaviour
             powerupPool[obj.tag].Enqueue(obj);
         else
             Debug.LogError($"Unknown object tag: {obj.tag}");
+    }
+
+    void UpdateSpawnTimesLvl5()
+    {
+        if (gameManager != null)
+        {
+            int currentLevel = gameManager.GetLevel();
+            if (currentLevel >= 5)
+            {
+                CancelInvoke("SpawnEnemy");
+                CancelInvoke("SpawnAnimal");
+                enemySpawnTime = 2.5f; // Adjust if needed.
+                animalSpawnTime = 2.0f; // Adjust if needed.
+                InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
+                InvokeRepeating("SpawnAnimal", startDelay, animalSpawnTime);
+            }
+        }
+    }
+
+    void UpdateSpawnTimesLvl8()
+    {
+        if (gameManager != null)
+        {
+            int currentLevel = gameManager.GetLevel();
+            if (currentLevel >= 8)
+            {
+                CancelInvoke("SpawnEnemy");
+                CancelInvoke("SpawnAnimal");
+                enemySpawnTime = 2.0f; // Adjust if needed.
+                animalSpawnTime = 1.5f; // Adjust if needed.
+                InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
+                InvokeRepeating("SpawnAnimal", startDelay, animalSpawnTime);
+            }
+        }
     }
 }

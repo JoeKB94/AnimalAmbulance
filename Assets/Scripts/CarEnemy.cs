@@ -14,16 +14,24 @@ public class CarEnemy : MonoBehaviour
     [SerializeField] 
     private float detectionRadius = 5.0f;
 
+    // Variable to store the level speed.
+    private float levelSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
         // Gets the GameManager script.
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Get the current level and update the level speed.
+        int currentLevel = gameManager.GetLevel();
+        UpdateLevelSpeed(currentLevel);
+
         MoveEnemy(); // Activates movement of the enemies after instantiation.
         CheckForCollisions(); // Check for collisions and adjust speed if necessary.
     }
@@ -31,11 +39,8 @@ public class CarEnemy : MonoBehaviour
     // Method to move the enemy after instantiation.
     void MoveEnemy()
     {
-        // Access the speed from the ScriptableObject. 
-        float currentSpeed = enemyAttributes.speed;
-
         // Transform action.
-        transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
+        transform.Translate(Vector3.back * levelSpeed * Time.deltaTime);
     }
 
     // Method to check for collisions and adjust speed.
@@ -51,18 +56,28 @@ public class CarEnemy : MonoBehaviour
                 CarEnemy otherEnemy = hitCollider.GetComponent<CarEnemy>();
                 if (otherEnemy != null)
                 {
-                    enemyAttributes.speed = otherEnemy.enemyAttributes.speed;
+                    levelSpeed = otherEnemy.levelSpeed;
                 }
                 else
                 {
                     AnimalMain otherAnimal = hitCollider.GetComponent<AnimalMain>();
                     if (otherAnimal != null)
                     {
-                        enemyAttributes.speed = otherAnimal.animalAttributes.speed;
+                        levelSpeed = otherAnimal.LevelSpeed;
                     }
                 }
             }
         }
+    }
+
+    // Method to update the level speed based on the current level.
+    void UpdateLevelSpeed(int updateLevel)
+    {
+        // Access the speed from the ScriptableObject.
+        float currentSpeed = enemyAttributes.speed;
+
+        // Gets base speed from the enemyAttributes and adds the level count to get the levelSpeed.
+        levelSpeed = currentSpeed + updateLevel;
     }
 
     // On trigger Health is updated and gameobject that has this script will be destroyed.

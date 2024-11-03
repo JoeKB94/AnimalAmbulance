@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveObjects : MonoBehaviour
 {
     // Sets speed for movement of the objects (= public to allow speeds change per different object).
-    public float baseSpeed = 4.0f;
+    public float baseSpeed = 5.0f;
     private float levelSpeed;
 
     // Sets Z-bound.

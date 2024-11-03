@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class AnimalMain : MonoBehaviour
 {
+    private float levelSpeed;
+
+    public float LevelSpeed // public property
+    {
+        get { return levelSpeed; }
+        set { levelSpeed = value; }
+    }
+
     // Reference for the ScriptableObject script.
     public AnimalScriptableObject animalAttributes;
 
@@ -11,7 +19,8 @@ public class AnimalMain : MonoBehaviour
     private GameManager gameManager;
 
     // Detection radius for collision checking.
-    [SerializeField] private float detectionRadius = 4.0f;
+    [SerializeField] 
+    private float detectionRadius = 4.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +32,10 @@ public class AnimalMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Gets current level from the GameManager.
+        int currentLevel = gameManager.GetLevel();
+        UpdateLevelSpeed(currentLevel);
+
         MoveAnimal(); // Activates movement of the animals after instantiation.
         CheckForCollisions(); // Check for collisions and adjust speed if necessary.
     }
@@ -30,11 +43,8 @@ public class AnimalMain : MonoBehaviour
     // Method to move the animal after activation/instantiation.
     void MoveAnimal()
     {
-        // Access the speed from the ScriptableObject.
-        float currentSpeed = animalAttributes.speed;
-
         // Transform action.
-        transform.Translate(Vector3.back * currentSpeed * Time.deltaTime);
+        transform.Translate(Vector3.back * levelSpeed * Time.deltaTime);
     }
 
     // Method to check for collisions and adjust speed.
@@ -50,10 +60,19 @@ public class AnimalMain : MonoBehaviour
                 AnimalMain otherAnimal = hitCollider.GetComponent<AnimalMain>();
                 if (otherAnimal != null)
                 {
-                    animalAttributes.speed = otherAnimal.animalAttributes.speed;
+                    levelSpeed = otherAnimal.levelSpeed;
                 }
             }
         }
+    }
+
+    void UpdateLevelSpeed(int updateLevel)
+    {
+        // Access the speed from the ScriptableObject.
+        float currentSpeed = animalAttributes.speed;
+
+        // Gets base speed from the animalAttributes and adds the level count to get the levelSpeed.
+        levelSpeed = currentSpeed  + updateLevel;
     }
 
     // On trigger Score is updated and gameobject that has this script will be destroyed.
