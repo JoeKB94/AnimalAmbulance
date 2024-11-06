@@ -37,9 +37,9 @@ public class PEAManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         // Creates set pools at the start of the game.
-        CreatePool("Animal", 10, animals, animalPool);
-        CreatePool("Enemy", 10, enemies, enemyPool);
-        CreatePool("PowerUp", 8, powerups, powerupPool);
+        CreatePool("Animal", 35, animals, animalPool);
+        CreatePool("Enemy", 35, enemies, enemyPool);
+        CreatePool("PowerUp", 20, powerups, powerupPool);
 
         // repeats the given methodes from the start of the game.
         InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
@@ -47,8 +47,9 @@ public class PEAManager : MonoBehaviour
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
 
         // Check and update spawn times periodically
-        InvokeRepeating("UpdateSpawnTimesLvl5", startDelay, 1.0f); // Checks every second, adjust if needed.
-        InvokeRepeating("UpdateSpawnTimesLvl8", startDelay, 1.0f); // Checks evey second, adjust if needed. 
+        InvokeRepeating("UpdateSpawnTimesLvl3", startDelay, 1.0f); // Checks every second, adjust if needed.
+        InvokeRepeating("UpdateSpawnTimesLvl7", startDelay, 1.0f); // Checks evey second, adjust if needed. 
+        InvokeRepeating("UpdateSpawnTimesLvl10", startDelay, 1.0f); // Checks evey second, adjust if needed.
     }
 
     void CreatePool(string type, int initialSize, GameObject[] prefabs, Dictionary<string, Queue<GameObject>> pool)
@@ -178,12 +179,12 @@ public class PEAManager : MonoBehaviour
             Debug.LogError($"Unknown object tag: {obj.tag}");
     }
 
-    void UpdateSpawnTimesLvl5()
+    void UpdateSpawnTimesLvl3()
     {
         if (gameManager != null)
         {
             int currentLevel = gameManager.GetLevel();
-            if (currentLevel >= 5)
+            if (currentLevel >= 3)
             {
                 CancelInvoke("SpawnEnemy");
                 CancelInvoke("SpawnAnimal");
@@ -195,17 +196,34 @@ public class PEAManager : MonoBehaviour
         }
     }
 
-    void UpdateSpawnTimesLvl8()
+    void UpdateSpawnTimesLvl7()
     {
         if (gameManager != null)
         {
             int currentLevel = gameManager.GetLevel();
-            if (currentLevel >= 8)
+            if (currentLevel >= 7)
             {
                 CancelInvoke("SpawnEnemy");
                 CancelInvoke("SpawnAnimal");
                 enemySpawnTime = 2.0f; // Adjust if needed.
                 animalSpawnTime = 1.5f; // Adjust if needed.
+                InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
+                InvokeRepeating("SpawnAnimal", startDelay, animalSpawnTime);
+            }
+        }
+    }
+
+    void UpdateSpawnTimesLvl10()
+    {
+        if (gameManager != null)
+        {
+            int currentLevel = gameManager.GetLevel();
+            if (currentLevel >= 10)
+            {
+                CancelInvoke("SpawnEnemy");
+                CancelInvoke("SpawnAnimal");
+                enemySpawnTime = 1.5f; // Adjust if needed.
+                animalSpawnTime = 1.0f; // Adjust if needed.
                 InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
                 InvokeRepeating("SpawnAnimal", startDelay, animalSpawnTime);
             }

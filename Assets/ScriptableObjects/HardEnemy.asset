@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HardEnemy
   m_EditorClassIdentifier: 
   damageDealt: -20
-  speed: 8
+  speed: 9

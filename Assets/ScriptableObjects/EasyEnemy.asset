@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EasyEnemy
   m_EditorClassIdentifier: 
   damageDealt: -5
-  speed: 6
+  speed: 7

@@ -66,10 +66,29 @@ public class AnimalMain : MonoBehaviour
         }
     }
 
-    void UpdateLevelSpeed(int updateLevel)
+    void UpdateLevelSpeed(int level)
     {
         // Access the speed from the ScriptableObject.
         float currentSpeed = animalAttributes.speed;
+
+        int updateLevel;
+
+        if (level >= 1 && level <= 3)
+        {
+            updateLevel = 1;
+        }
+        else if (level >= 4 && level <= 6)
+        {
+            updateLevel = 4;
+        }
+        else if (level >= 7 && level <= 9)
+        {
+            updateLevel = 7;
+        }
+        else
+        {
+            updateLevel = 9; // Default value if level is outside the specified ranges.
+        }
 
         // Gets base speed from the animalAttributes and adds the level count to get the levelSpeed.
         levelSpeed = currentSpeed  + updateLevel;

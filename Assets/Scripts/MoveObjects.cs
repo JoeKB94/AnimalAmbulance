@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveObjects : MonoBehaviour
 {
     // Sets speed for movement of the objects (= public to allow speeds change per different object).
-    public float baseSpeed = 5.0f;
+    public float baseSpeed = 6.0f;
     private float levelSpeed;
 
     // Sets Z-bound.
@@ -38,8 +38,27 @@ public class MoveObjects : MonoBehaviour
 
     }
 
-    void UpdateLevelSpeed(int updateLevel)
+    void UpdateLevelSpeed(int level)
     {
+        int updateLevel;
+
+        if (level >= 1 && level <= 3)
+        {
+            updateLevel = 1;
+        }
+        else if (level >= 4 && level <= 6)
+        {
+            updateLevel = 4;         
+        }
+        else if (level >= 7 && level <= 9)
+        {
+            updateLevel = 7;
+        }
+        else
+        {
+            updateLevel = 9; // Default value if level is outside the specified ranges.
+        }
+
         levelSpeed = baseSpeed + updateLevel;
     }
 }

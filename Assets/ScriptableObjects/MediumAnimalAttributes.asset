@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MediumAnimalAttributes
   m_EditorClassIdentifier: 
   scoreIncrease: 15
-  speed: 7
+  speed: 8
