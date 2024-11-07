@@ -6,11 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // Variables to set player movement speeds.
     private float speed = 25.0f;
-    private float normalSpeed = 25.0f;
-    private float boostedSpeed = 50.0f;
-
-    // Variable to set the duration on the speedboost.
-    private float boostDuration = 10.0f;
+    public float normalSpeed = 25.0f;
 
     // Range that the player can move on the x-axis.
     private float moveRangeX = 22.0f;
@@ -28,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     // Sets a variable for point to be added to score.
     public int pointValue;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     // Moves the player based on input.
     void PlayerMovement()
-    {        
+    {
         // links the horizontalInput variable to the GetAxis input methode. 
         float horizontalInput = Input.GetAxis("Horizontal");
 
@@ -71,17 +67,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Action to do on collision.
-    private void OnTriggerEnter(Collider other)
-    {
-        // On collision checks tag and if correct, does an action.
-        if (other.CompareTag("PowerUp")) 
-        {
-            Destroy(other.gameObject);
-            StartCoroutine(SpeedBoostCoroutine());
-        }
-    }
-
     // Shoots a Aidkit when SPACE is pressed.
     void FireFirstAid()
     {
@@ -92,15 +77,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-        // Coroutine for a speedboost to the player.
-        private IEnumerator SpeedBoostCoroutine()
+    public float GetSpeed()
     {
-        speed = boostedSpeed; // Set the boosted speed
-        AmbulanceLights.SetActive(true);
+        return speed;
+    }
 
-        yield return new WaitForSeconds(boostDuration); // Wait for the boost duration
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 
-        speed = normalSpeed; // Return to normal speed
-        AmbulanceLights.SetActive(false);
+    // Method to activate and deactivate AmbulanceLights
+    public void SetAmbulanceLights(bool isActive)
+    {
+        AmbulanceLights.SetActive(isActive);
+        Debug.Log("AmbulanceLights set to: " + isActive);
+    }
+
+    // Coroutine to handle speed boost
+    public IEnumerator SpeedBoostCoroutine(float boostDuration, float boostedSpeed)
+    {
+        SetSpeed(boostedSpeed); // Set the boosted speed
+        SetAmbulanceLights(true); // Activate AmbulanceLights
+        Debug.Log("Speed boost activated");
+
+        yield return new WaitForSecondsRealtime(boostDuration); // Wait for the boost duration
+        Debug.Log("Boost duration ended");
+
+        SetSpeed(normalSpeed); // Return to normal speed
+        Debug.Log("Speed reset to normal");
+
+        SetAmbulanceLights(false); // Deactivate AmbulanceLights
+        Debug.Log("AmbulanceLights deactivated");
     }
 }

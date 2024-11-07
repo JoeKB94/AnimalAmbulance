@@ -35,7 +35,6 @@ public class MoveObjects : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     void UpdateLevelSpeed(int level)

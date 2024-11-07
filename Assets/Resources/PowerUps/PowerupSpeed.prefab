@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2888917711071561372}
   - component: {fileID: 3731045591065372304}
   - component: {fileID: 5287944870684142541}
+  - component: {fileID: 8303802790134295380}
   - component: {fileID: 2887603179947509724}
   m_Layer: 0
   m_Name: PowerupSpeed
@@ -98,7 +99,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f923c0f7b481124dad96cf2d6441485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: -4
+  baseSpeed: 7
+--- !u!114 &8303802790134295380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420510672842050487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a1db231121ea2489ada8d8054827d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostDuration: 10
+  boostedSpeed: 40
 --- !u!65 &2887603179947509724
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,8 +133,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4126782, y: 2.221932, z: 2.3110447}
-  m_Center: {x: -0.0051599345, y: 0.17403135, z: 0.13392115}
+  m_Size: {x: 2.4126782, y: 2.065215, z: 2.3110447}
+  m_Center: {x: -0.0051599345, y: -0.62803805, z: 0.13392115}
 --- !u!1001 &7762266948403874079
 PrefabInstance:
   m_ObjectHideFlags: 0

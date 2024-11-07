@@ -25,7 +25,7 @@ public class PEAManager : MonoBehaviour
     private float startDelay = 1.0f;
     private float enemySpawnTime = 3.0f;
     private float animalSpawnTime = 2.5f;
-    private float powerupSpawnTime = 15.0f;
+    private float powerupSpawnTime = 5.0f;
 
     // Reference to the GameManager script.
     private GameManager gameManager;
