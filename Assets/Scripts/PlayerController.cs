@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private float moveRangeX = 22.0f;
 
     // Variables to limit amount of AidKits being fired.
-    private float fireCooldown = 2.0f;
-    private float lastFireTime = 0.0f;
+    private float fireCooldown = 5.0f;
+    private float[] lastFireTimes = new float[3];
 
     // Sets variable for GameManager script.
     private GameManager gameManager;
@@ -25,26 +26,39 @@ public class PlayerController : MonoBehaviour
     // Sets a variable for point to be added to score.
     public int pointValue;
 
+    // UI elements for Green and Red lights.
+    public GameObject GreenLight1;
+    public GameObject RedLight1;
+    public GameObject GreenLight2;
+    public GameObject RedLight2;
+    public GameObject GreenLight3;
+    public GameObject RedLight3;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        for (int i = 0; i < lastFireTimes.Length; i++)
+        {
+            lastFireTimes[i] = -fireCooldown; // Initialize to allow immediate firing
+        }
+        UpdateLights();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Calls upon programmed methodes (see futher down in code).
+        // Calls upon programmed methods (see further down in code).
         PlayerMovement();
         ConstrainPlayerBound();
         FireFirstAid();
+        UpdateLights();
     }
 
     // Moves the player based on input.
     void PlayerMovement()
     {
-        // links the horizontalInput variable to the GetAxis input methode. 
+        // Links the horizontalInput variable to the GetAxis input method.
         float horizontalInput = Input.GetAxis("Horizontal");
 
         // Moves the player on the x-axis when the corresponding button is pressed.
@@ -67,13 +81,45 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Shoots a Aidkit when SPACE is pressed.
+    // Shoots an Aidkit when SPACE is pressed.
     void FireFirstAid()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time - lastFireTime >= fireCooldown)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(FirstAidKit, transform.position, FirstAidKit.transform.rotation);
-            lastFireTime = Time.time;
+            for (int i = 0; i < lastFireTimes.Length; i++)
+            {
+                if (Time.time - lastFireTimes[i] >= fireCooldown)
+                {
+                    Instantiate(FirstAidKit, transform.position, FirstAidKit.transform.rotation);
+                    lastFireTimes[i] = Time.time;
+                    UpdateLights();
+                    break; // Fire only one FirstAidKit per key press
+                }
+            }
+        }
+    }
+
+    // Updates the visibility of the Green and Red lights based on cooldown status.
+    void UpdateLights()
+    {
+        for (int i = 0; i < lastFireTimes.Length; i++)
+        {
+            bool canFire = Time.time - lastFireTimes[i] >= fireCooldown;
+            switch (i)
+            {
+                case 0:
+                    GreenLight1.SetActive(canFire);
+                    RedLight1.SetActive(!canFire);
+                    break;
+                case 1:
+                    GreenLight2.SetActive(canFire);
+                    RedLight2.SetActive(!canFire);
+                    break;
+                case 2:
+                    GreenLight3.SetActive(canFire);
+                    RedLight3.SetActive(!canFire);
+                    break;
+            }
         }
     }
 
@@ -91,7 +137,7 @@ public class PlayerController : MonoBehaviour
     public void SetAmbulanceLights(bool isActive)
     {
         AmbulanceLights.SetActive(isActive);
-        Debug.Log("AmbulanceLights set to: " + isActive);
+        //Debug.Log("AmbulanceLights set to: " + isActive);
     }
 
     // Coroutine to handle speed boost
@@ -99,15 +145,15 @@ public class PlayerController : MonoBehaviour
     {
         SetSpeed(boostedSpeed); // Set the boosted speed
         SetAmbulanceLights(true); // Activate AmbulanceLights
-        Debug.Log("Speed boost activated");
+        //Debug.Log("Speed boost activated");
 
         yield return new WaitForSecondsRealtime(boostDuration); // Wait for the boost duration
-        Debug.Log("Boost duration ended");
+        //Debug.Log("Boost duration ended");
 
         SetSpeed(normalSpeed); // Return to normal speed
-        Debug.Log("Speed reset to normal");
+        //Debug.Log("Speed reset to normal");
 
         SetAmbulanceLights(false); // Deactivate AmbulanceLights
-        Debug.Log("AmbulanceLights deactivated");
+        //Debug.Log("AmbulanceLights deactivated");
     }
 }
