@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < lastFireTimes.Length; i++)
             {
-                if (Time.time - lastFireTimes[i] >= fireCooldown)
+                if (i >= 0 && i < lastFireTimes.Length && Time.time - lastFireTimes[i] >= fireCooldown)
                 {
                     Instantiate(FirstAidKit, transform.position, FirstAidKit.transform.rotation);
                     lastFireTimes[i] = Time.time;
