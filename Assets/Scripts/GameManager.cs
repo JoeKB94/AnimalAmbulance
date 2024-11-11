@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
         UpdateHealth(100);
         UpdateScore(0);
         level = 1;
-       
+
+        LoadVSyncSettings();
     }
 
     // Update is called once per frame
@@ -128,6 +129,15 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             PauseMenu.SetActive(false);
+        }
+    }
+
+    public void LoadVSyncSettings()
+    {
+        if (PlayerPrefs.HasKey("VSync"))
+        {
+            int vSyncValue = PlayerPrefs.GetInt("VSync");
+            QualitySettings.vSyncCount = vSyncValue;
         }
     }
 
