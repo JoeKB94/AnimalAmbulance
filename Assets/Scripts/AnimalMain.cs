@@ -62,6 +62,14 @@ public class AnimalMain : MonoBehaviour
                 {
                     levelSpeed = otherAnimal.levelSpeed;
                 }
+                else
+                {
+                    CarEnemy otherEnemy = hitCollider.GetComponent<CarEnemy>();
+                    if (otherEnemy != null)
+                    {
+                        levelSpeed = otherEnemy.LevelSpeed; // Use the public property
+                    }
+                }
             }
         }
     }

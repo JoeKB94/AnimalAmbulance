@@ -17,6 +17,12 @@ public class CarEnemy : MonoBehaviour
     // Variable to store the level speed.
     private float levelSpeed;
 
+    public float LevelSpeed // public property
+    {
+        get { return levelSpeed; }
+        set { levelSpeed = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
