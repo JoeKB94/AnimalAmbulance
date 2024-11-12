@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public GameObject GreenLight3;
     public GameObject RedLight3;
 
+    // AudioSource for abulance sound.
+    private AudioSource ambulanceSounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,9 @@ public class PlayerController : MonoBehaviour
             lastFireTimes[i] = -fireCooldown; // Initialize to allow immediate firing
         }
         UpdateLights();
+
+        // Get the AudioSource component.
+        ambulanceSounds = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -137,6 +143,14 @@ public class PlayerController : MonoBehaviour
     public void SetAmbulanceLights(bool isActive)
     {
         AmbulanceLights.SetActive(isActive);
+        if (isActive)
+        {
+            ambulanceSounds.Play(); // Play the ambulance sound
+        }
+        else
+        {
+            ambulanceSounds.Stop(); // Stop the ambulance sound
+        }
         //Debug.Log("AmbulanceLights set to: " + isActive);
     }
 
