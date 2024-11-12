@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
     // Sets action to start the game, also deactivates UI-element.
     public void EnterKey()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !GameOverMenu.activeSelf)
         {
             Time.timeScale = 1;
             StartMenu.SetActive(false);
