@@ -11,7 +11,7 @@ public class CarEnemy : MonoBehaviour
     private GameManager gameManager;
 
     // Detection radius for collision checking.
-    [SerializeField] 
+    [SerializeField]
     private float detectionRadius = 5.0f;
 
     // Variable to store the level speed.
@@ -23,12 +23,17 @@ public class CarEnemy : MonoBehaviour
         set { levelSpeed = value; }
     }
 
+    // AudioSource for hit sound
+    private AudioSource hitSound;
+
     // Start is called before the first frame update
     void Start()
     {
         // Gets the GameManager script.
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        // Get the AudioSource component
+        hitSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -110,6 +115,9 @@ public class CarEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // Play the hit sound at the enemy's position
+            AudioSource.PlayClipAtPoint(hitSound.clip, other.transform.position, 1.0f);
+
             Destroy(gameObject);
             gameManager.UpdateHealth(enemyAttributes.damageDealt);
         }
