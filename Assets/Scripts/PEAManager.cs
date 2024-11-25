@@ -22,7 +22,7 @@ public class PEAManager : MonoBehaviour
     private float ySpawn = 0.75f;
 
     // Set spawn timings
-    private float startDelay = 1.0f;
+    private float startDelay = 0.5f;
     private float enemySpawnTime = 3.0f;
     private float animalSpawnTime = 2.5f;
     private float powerupSpawnTime = 10.0f;
@@ -86,7 +86,7 @@ public class PEAManager : MonoBehaviour
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
         Vector3 spawnPos = new Vector3(randomX, ySpawn, zSpawn);
 
-        if (IsAreaClear(spawnPos, 5.0f)) // Adjust radius as needed
+        if (IsAreaClear(spawnPos, 10.0f)) // Adjust radius as needed
         {
             if (pool.ContainsKey(tag) && pool[tag].Count > 0)
             {
@@ -205,8 +205,8 @@ public class PEAManager : MonoBehaviour
             {
                 CancelInvoke("SpawnEnemy");
                 CancelInvoke("SpawnAnimal");
-                enemySpawnTime = 2.0f; // Adjust if needed.
-                animalSpawnTime = 1.5f; // Adjust if needed.
+                enemySpawnTime = 2.25f; // Adjust if needed.
+                animalSpawnTime = 1.75f; // Adjust if needed.
                 InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
                 InvokeRepeating("SpawnAnimal", startDelay, animalSpawnTime);
             }
@@ -222,8 +222,8 @@ public class PEAManager : MonoBehaviour
             {
                 CancelInvoke("SpawnEnemy");
                 CancelInvoke("SpawnAnimal");
-                enemySpawnTime = 1.5f; // Adjust if needed.
-                animalSpawnTime = 1.0f; // Adjust if needed.
+                enemySpawnTime = 1.25f; // Adjust if needed.
+                animalSpawnTime = 0.75f; // Adjust if needed.
                 InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
                 InvokeRepeating("SpawnAnimal", startDelay, animalSpawnTime);
             }
