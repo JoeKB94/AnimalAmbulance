@@ -17,13 +17,14 @@ public class CarEnemy : MonoBehaviour
     // Variable to store the level speed.
     private float levelSpeed;
 
-    public float LevelSpeed // public property
+    // Variable to aquire the return value from GameManager.cs.
+    public float LevelSpeed 
     {
         get { return levelSpeed; }
         set { levelSpeed = value; }
     }
 
-    // AudioSource for hit sound
+    // AudioSource for the collision sound.
     private AudioSource hitSound;
 
     // Start is called before the first frame update
@@ -50,7 +51,7 @@ public class CarEnemy : MonoBehaviour
     // Method to move the enemy after instantiation.
     void MoveEnemy()
     {
-        // Transform action.
+        // Move action.
         transform.Translate(Vector3.back * levelSpeed * Time.deltaTime);
     }
 

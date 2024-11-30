@@ -34,17 +34,20 @@ public class PlayerController : MonoBehaviour
     public GameObject GreenLight3;
     public GameObject RedLight3;
 
-    // AudioSource for abulance sound.
+    // AudioSource for ambulance sound.
     private AudioSource ambulanceSounds;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Gets the gameManger.cs.
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         for (int i = 0; i < lastFireTimes.Length; i++)
         {
             lastFireTimes[i] = -fireCooldown; // Initialize to allow immediate firing
         }
+
+        // Methode that checks if the aid-kit lights should be activated or deactivated. 
         UpdateLights();
 
         // Get the AudioSource component.
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Variables to get and set movement speeds.
     public float GetSpeed()
     {
         return speed;

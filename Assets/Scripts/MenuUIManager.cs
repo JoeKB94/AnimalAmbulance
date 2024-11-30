@@ -21,20 +21,25 @@ public class MenuUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Gets VSync settings.
         VsyncSettings();
 
+        // Variables related to sound settings
         float masterVolume; 
         float musicVolume; 
         float sFXVolume; 
         
+        // Gets the value for sound varialbles.
         audioMixer.GetFloat("MasterVolume", out masterVolume); 
         audioMixer.GetFloat("MusicVolume", out musicVolume); 
         audioMixer.GetFloat("SFXVolume", out sFXVolume); 
         
+        // Sets sound values.
         masterSlider.value = Mathf.Pow(10, masterVolume / 20); 
         musicSlider.value = Mathf.Pow(10, musicVolume / 20); 
         sFXSlider.value = Mathf.Pow(10, sFXVolume / 20); 
         
+        // Checks for changes in the sounds settings.
         masterSlider.onValueChanged.AddListener(SetMasterVolume); 
         musicSlider.onValueChanged.AddListener(SetMusicVolume); 
         sFXSlider.onValueChanged.AddListener(SetSFXVolume);
@@ -43,6 +48,7 @@ public class MenuUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Checks if Escape is pressed by the player.
         EscapeKey();
     }
 
@@ -55,6 +61,7 @@ public class MenuUIManager : MonoBehaviour
         }
     }
 
+    // Method to manage VSync settings.
     void VsyncSettings()
     {
         {
@@ -76,6 +83,7 @@ public class MenuUIManager : MonoBehaviour
         }
     }
 
+    // Methodes to set the sounds volumes.
     public void SetMasterVolume(float volume) 
     { 
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20); 
@@ -91,6 +99,7 @@ public class MenuUIManager : MonoBehaviour
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20); 
     }
 
+    // Toggle function for VSync.
     public void ToggleVSync(Toggle toggle)
     {
         if (toggle.isOn)
@@ -112,6 +121,7 @@ public class MenuUIManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    // Currently unused, but loads the Highscore scene.
     public void LoadHighScoreScene()
     {
         SceneManager.LoadScene("HighScore");

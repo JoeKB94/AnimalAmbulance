@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Awake is called when the scene is loaded
     void Awake()
     {
+        // Pauses the game on awake.
         Time.timeScale = 0;
         StartMenu.SetActive(true);
     }
@@ -35,17 +36,23 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Starts methods that update the health and score count.
         UpdateHealth(100);
         UpdateScore(0);
+        // Sets level to 1 on start of the game.
         level = 1;
 
+        // Loads the VSync settings from the menu settings.
         LoadVSyncSettings();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Checks the level count.
         UpdateLevel(0);
+
+        // Checks if and which button is pressed. 
         PauseButton();
         EscapeKey();
         EnterKey();
@@ -62,15 +69,17 @@ public class GameManager : MonoBehaviour
     public void UpdateHealth (int healthToAdd)
     {
         health += healthToAdd;
-        health = Mathf.Clamp(health, 0, 100); // Limit health to a range of 0 to 100
+        health = Mathf.Clamp(health, 0, 100); // Limits health to a range of 0 to 100
 
         if (health <= 0)
         {
+            // Stops game and activates game over.
             Time.timeScale = 0;
             GameOverMenu.SetActive(true);
-            Debug.Log("Game Over");
+            // Debug.Log("Game Over");
         }
 
+        // Displays healt count.
         healthText.text = "Health " + health + "%";
     }
 
@@ -132,6 +141,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Method that loads the VSync settings.
     public void LoadVSyncSettings()
     {
         if (PlayerPrefs.HasKey("VSync"))
@@ -153,6 +163,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    // Currently unused, but gives and option for the player to go to the Highscore scene.
     public void LoadHighScoreScene()
     {
         SceneManager.LoadScene("HighScore");

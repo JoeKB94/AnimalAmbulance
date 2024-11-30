@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthUp : MonoBehaviour
 {
-    // Sets variable to access a diferent script.
+    // Sets variable to access a different script.
     private GameManager gameManager;
 
     // Set damage amount.
@@ -13,17 +13,11 @@ public class HealthUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Gets the GameManager script.
+        //Gets the GameManager.cs
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    // On trigger Health is updated and gameobject that has this script will be destroyed.
+    // On trigger, Health is updated and gameobject that has this script will be destroyed.
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -7,14 +7,8 @@ public class FirstAid : MonoBehaviour
     // Variable for movement speed of the first aid kit. 
     private float speed = 25.0f;
 
-    // Sets Z-bound.
+    // Sets Z-boundairy.
     private float zDestroyBound = 50.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,10 +16,10 @@ public class FirstAid : MonoBehaviour
         MoveFirstAid(); // makes sure that the Aidkit moves once it's instantiated.
     }
 
-
     // Methode to move the AidKit.
     void MoveFirstAid()
     {
+        // Move action.
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
         // Destroys objects when they exceed given Z-bound.
@@ -35,7 +29,7 @@ public class FirstAid : MonoBehaviour
         }
     }
 
-    // Checks trigger on collider and the destroys both objects if tag matches. 
+    // Checks trigger on collider and then destroys both objects if tag matches. 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("PowerUp") || other.CompareTag("HealthUp") || other.CompareTag("Animal"))

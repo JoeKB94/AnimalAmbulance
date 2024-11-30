@@ -17,8 +17,7 @@ public class RepeatRoad : MonoBehaviour
         // Sets exact startPos of the road.
         startPos = new Vector3(0, 0, RoadPosZ);
         // Sets exact Width where the road should be repeated.
-        repeatWidth = GetComponent<BoxCollider>().size.z * 2;
-        
+        repeatWidth = GetComponent<BoxCollider>().size.z * 2;  
     }
 
     // Update is called once per frame

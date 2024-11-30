@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AnimalMain : MonoBehaviour
 {
+    // Sest variable for the levelspeed.
     private float levelSpeed;
 
-    public float LevelSpeed // public property
+    // Variable to aquire the return value from GameManager.cs.
+    public float LevelSpeed 
     {
         get { return levelSpeed; }
         set { levelSpeed = value; }
@@ -15,12 +17,12 @@ public class AnimalMain : MonoBehaviour
     // Reference for the ScriptableObject script.
     public AnimalScriptableObject animalAttributes;
 
-    // Sets variable to access a different script.
+    // Sets variable to access GameManager.cs.
     private GameManager gameManager;
 
     // Detection radius for collision checking.
     [SerializeField] 
-    private float detectionRadius = 4.0f;
+    private float detectionRadius = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,13 +39,13 @@ public class AnimalMain : MonoBehaviour
         UpdateLevelSpeed(currentLevel);
 
         MoveAnimal(); // Activates movement of the animals after instantiation.
-        CheckForCollisions(); // Check for collisions and adjust speed if necessary.
+        CheckForCollisions(); // Checks for collisions and adjusts speed if necessary.
     }
 
     // Method to move the animal after activation/instantiation.
     void MoveAnimal()
     {
-        // Transform action.
+        // Move action.
         transform.Translate(Vector3.back * levelSpeed * Time.deltaTime);
     }
 
@@ -67,7 +69,7 @@ public class AnimalMain : MonoBehaviour
                     CarEnemy otherEnemy = hitCollider.GetComponent<CarEnemy>();
                     if (otherEnemy != null)
                     {
-                        levelSpeed = otherEnemy.LevelSpeed; // Use the public property
+                        levelSpeed = otherEnemy.LevelSpeed; 
                     }
                 }
             }
@@ -81,6 +83,7 @@ public class AnimalMain : MonoBehaviour
 
         int updateLevel;
 
+        // Sets the speed depending on the current level.
         if (level >= 1 && level <= 3)
         {
             updateLevel = 1;

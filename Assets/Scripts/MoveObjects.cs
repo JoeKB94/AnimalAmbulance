@@ -37,6 +37,7 @@ public class MoveObjects : MonoBehaviour
         }
     }
 
+    // Checks and sets the range and speed value connected to it.
     void UpdateLevelSpeed(int level)
     {
         int updateLevel;

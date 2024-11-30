@@ -52,6 +52,7 @@ public class PEAManager : MonoBehaviour
         InvokeRepeating("UpdateSpawnTimesLvl10", startDelay, 1.0f); // Checks evey second, adjust if needed.
     }
 
+    // Creates the object pools.
     void CreatePool(string type, int initialSize, GameObject[] prefabs, Dictionary<string, Queue<GameObject>> pool)
     {
         foreach (var prefab in prefabs)
@@ -67,6 +68,7 @@ public class PEAManager : MonoBehaviour
         }
     }
 
+    // Checks if the area is clear to spawn.
     bool IsAreaClear(Vector3 position, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(position, radius);
@@ -81,6 +83,7 @@ public class PEAManager : MonoBehaviour
         return true;
     }
 
+    // Spawns objects from the pool.
     void SpawnFromPool(string tag, float zSpawn, Dictionary<string, Queue<GameObject>> pool)
     {
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
@@ -117,6 +120,7 @@ public class PEAManager : MonoBehaviour
         }
     }
 
+    // Methodes to spawn different prefabs/gameobjects.
     void SpawnEnemy()
     {
         // Randomizes spawned object from array.
@@ -179,6 +183,7 @@ public class PEAManager : MonoBehaviour
             Debug.LogError($"Unknown object tag: {obj.tag}");
     }
 
+    // Methodes to update the spawntimings in relation to the current level.
     void UpdateSpawnTimesLvl3()
     {
         if (gameManager != null)
